@@ -41,14 +41,15 @@
         <p id="result"></p>
     </div>
     <script>
-        function checkAnswer() {
-            var answer = document.getElementById("answer").value.toUpperCase();
-            if (answer === "WELCOME TO RESIDENT EVIL") {
-                document.getElementById("result").innerHTML = "Correct! Proceed to the next room: <a href='room2_forensics.html'>Forensics Room</a>";
-            } else {
-                document.getElementById("result").innerHTML = "Incorrect. Try again!";
-            }
-        }
+      function checkAnswer() {
+    var answer = document.getElementById("answer").value.toUpperCase();
+    if (answer === "WELCOME TO RESIDENT EVIL") {
+        document.getElementById("result").innerHTML = "Correct! Proceed to the next room: <a href='room2_forensics.html'>Forensics Room</a>";
+    } else {
+        document.getElementById("result").innerHTML = "Incorrect. Try again!";
+    }
+}
+
     </script>
 </body>
 </html>
