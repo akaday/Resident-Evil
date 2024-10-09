@@ -32,24 +32,40 @@
         <h1>Cryptography Room</h1>
         <p>Solve the puzzle to escape this room.</p>
         <div class="puzzle">
-            <h2>Caesar Cipher</h2>
+            <h2>Step 1: Caesar Cipher</h2>
             <p>Decrypt this message: ZHOFRPH WR UHVLGHQW HYLO</p>
             <p>Hint: Use a shift of 3.</p>
-            <input type="text" id="answer" placeholder="Enter your answer here">
-            <button onclick="checkAnswer()">Submit</button>
+            <input type="text" id="answer1" placeholder="Enter your answer here">
+            <button onclick="checkStep1()">Submit</button>
+        </div>
+        <div id="step2" class="puzzle" style="display:none;">
+            <h2>Step 2: Vigenère Cipher</h2>
+            <p>Decrypt this message: LXFOPVEFRNHR</p>
+            <p>Hint: The key is "LEMON".</p>
+            <input type="text" id="answer2" placeholder="Enter your answer here">
+            <button onclick="checkStep2()">Submit</button>
         </div>
         <p id="result"></p>
     </div>
     <script>
-      function checkAnswer() {
-    var answer = document.getElementById("answer").value.toUpperCase();
-    if (answer === "WELCOME TO RESIDENT EVIL") {
-        document.getElementById("result").innerHTML = "Correct! Proceed to the next room: <a href='room2_forensics.html'>Forensics Room</a>";
-    } else {
-        document.getElementById("result").innerHTML = "Incorrect. Try again!";
-    }
-}
+        function checkStep1() {
+            var answer1 = document.getElementById("answer1").value.toUpperCase();
+            if (answer1 === "WELCOME TO RESIDENT EVIL") {
+                document.getElementById("result").innerHTML = "Correct! Proceed to Step 2.";
+                document.getElementById("step2").style.display = "block";
+            } else {
+                document.getElementById("result").innerHTML = "Incorrect. Try again!";
+            }
+        }
 
+        function checkStep2() {
+            var answer2 = document.getElementById("answer2").value.toUpperCase();
+            if (answer2 === "KEY IS LEMON") {
+                document.getElementById("result").innerHTML = "Correct! Proceed to the next room: <a href='room2_forensics.html'>Forensics Room</a>";
+            } else {
+                document.getElementById("result").innerHTML = "Incorrect. Try again!";
+            }
+        }
     </script>
 </body>
 </html>
