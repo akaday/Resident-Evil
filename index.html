@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTF Challenge - Home</title>
+    <title>Virtual Escape Room</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,35 +12,102 @@
             text-align: center;
             padding: 20px;
         }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
         h1 {
             color: #E50914;
         }
-        .section {
-            margin: 20px 0;
+        .start-btn {
+            background-color: #E50914;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        a {
-            color: #E50914;
-            text-decoration: none;
+        .start-btn:hover {
+            background-color: #BF0A0A;
         }
-        a:hover {
-            text-decoration: underline.
+        .hint-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .hint-btn:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 10px;
+            background-color: #E50914;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #BF0A0A;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the CTF Challenge</h1>
-        <p>Test your skills in our exciting Capture The Flag challenges and become a cybersecurity expert!</p>
-        <div class="section">
-            <h2>Featured Challenges</h2>
-            <p>Explore some of our most thrilling challenges.</p>
-            <!-- Add links to featured challenges -->
-        </div>
-        <div class="section">
-            <h2>Get Started</h2>
-            <p>Ready to dive in? <a href="challenges.html">Start Here</a></p>
-        </div>
+        <h1>Virtual Escape Room</h1>
+        <p>Welcome to the ultimate cybersecurity escape room. Solve the puzzles to advance to the next level. Are you ready to start?</p>
+        <button class="start-btn" onclick="window.location.href='room1_cryptography.html'">Start the Challenge</button>
+        <div id="timer">00:05:00</div>
+        <p>Current Score: <span id="score">0</span></p>
+        <button class="hint-btn" onclick="showHint()">Hint</button>
+        <p id="hint"></p>
+        <p>Check out the <a href="leaderboard.html">Leaderboard</a> and share your thoughts on our <a href="blog.html">Blog</a>.</p>
+        <textarea id="feedback" placeholder="Leave your feedback here"></textarea>
+        <button onclick="submitFeedback()">Submit</button>
+        <script>
+            // Timer
+            var timeLeft = 300;
+            var timer = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("timer").innerHTML = "Time's up!";
+                } else {
+                    var minutes = Math.floor(timeLeft / 60);
+                    var seconds = timeLeft % 60;
+                    document.getElementById("timer").innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+                timeLeft--;
+            }, 1000);
+            
+            // Score
+            var score = 0;
+            function updateScore(points) {
+                score += points;
+                document.getElementById("score").innerHTML = score;
+            }
+            
+            // Hint
+            function showHint() {
+                document.getElementById("hint").innerHTML = "Here's your hint!";
+            }
+            
+            // Feedback
+            function submitFeedback() {
+                var feedback = document.getElementById("feedback").value;
+                alert("Feedback submitted: " + feedback);
+            }
+        </script>
     </div>
-    <p>Check out the <a href="leaderboard.html">Leaderboard</a> and share your thoughts on our <a href="blog.html">Blog</a>.</p>
 </body>
 </html>
