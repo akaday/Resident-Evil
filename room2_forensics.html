@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room - Forensics</title>
+    <title>CTF Challenge - Forensics</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,18 +12,59 @@
             text-align: center;
             padding: 20px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto.
-        }
         h1 {
-            color: #E50914.
+            color: #E50914;
         }
-        .puzzle {
-            background-color: #333.
-            padding: 15px.
-            margin: 10px 0.
-            border-radius: 5px.
+        .section {
+            margin: 20px 0;
+        }
+        .challenge {
+            background-color: #333;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
         }
     </style>
-</head
+</head>
+<body>
+    <div class="container">
+        <h1>Forensics Room</h1>
+        <p>Solve the puzzles to escape this room.</p>
+        <div class="puzzle">
+            <h2>Step 1: File Metadata</h2>
+            <p>Analyze the metadata of this file: <a href="suspicious_file.jpg">suspicious_file.jpg</a></p>
+            <p>Hint: Look for hidden messages in the metadata.</p>
+            <input type="text" id="answer1" placeholder="Enter your answer here">
+            <button onclick="checkStep1()">Submit</button>
+        </div>
+        <div id="step2" class="puzzle" style="display:none;">
+            <h2>Step 2: Network Traffic</h2>
+            <p>Analyze the provided network traffic capture to find anomalies.</p>
+            <p>Hint: Pay attention to unusual IP addresses and ports.</p>
+            <input type="text" id="answer2" placeholder="Enter your answer here">
+            <button onclick="checkStep2()">Submit</button>
+        </div>
+        <p id="result"></p>
+    </div>
+    <script>
+        function checkStep1() {
+            var answer1 = document.getElementById("answer1").value.toUpperCase();
+            if (answer1 === "HIDDEN MESSAGE FOUND") {
+                document.getElementById("result").innerHTML = "Correct! Proceed to Step 2.";
+                document.getElementById("step2").style.display = "block";
+            } else {
+                document.getElementById("result").innerHTML = "Incorrect. Try again!";
+            }
+        }
+
+        function checkStep2() {
+            var answer2 = document.getElementById("answer2").value.toUpperCase();
+            if (answer2 === "ANOMALOUS IP FOUND") {
+                document.getElementById("result").innerHTML = "Correct! Proceed to the next room: <a href='room3_exploitation.html'>Web Exploitation Room</a>";
+            } else {
+                document.getElementById("result").innerHTML = "Incorrect. Try again!";
+            }
+        }
+    </script>
+</body>
+</html>
